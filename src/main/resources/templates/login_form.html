@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn.google {
+            background-color: #db4437;
+            flex: 1;
+        }
+        .btn.kakao {
+            background-color: #fee500;
+            color: #3b1e1e;
+            flex: 1;
+        }
+        .btn.naver {
+            background-color: #03c75a;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/login}" method="post">
+        <input type="text" name="username" class="input" placeholder="아이디">
+        <input type="password" name="password" class="input" placeholder="비밀번호">
+        <input type="submit" class="btn" value="로그인">
+    </form>
+    <div class="social-buttons">
+        <a href="/oauth2/authorization/google" class="btn google">Google</a>
+        <a href="/oauth2/authorization/kakao" class="btn kakao">kakao</a>
+        <a href="/oauth2/authorization/naver" class="btn naver">naver</a>
+    </div>
+    <a href="/signup" class="btn">회원 가입</a>
+</div>
+</body>
+</html>

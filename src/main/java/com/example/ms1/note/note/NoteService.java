@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class NoteService {
@@ -36,6 +35,17 @@ public class NoteService {
 
     public void delete(Long id) {
         noteRepository.deleteById(id);
+    }
+
+    public List<Note> getSearchedNoteList(String keyword){
+        return noteRepository.findByTitleContaining(keyword);
+    }
+
+    public List<Note> getSortedListByCreateDate(Notebook targetNotebook){
+        return noteRepository.findByNotebookOrderByCreateDateDesc(targetNotebook);
+    }
+    public List<Note> getSortedListByTitle(Notebook targetNotebook){
+        return noteRepository.findByNotebookOrderByTitle(targetNotebook);
     }
 
 }
